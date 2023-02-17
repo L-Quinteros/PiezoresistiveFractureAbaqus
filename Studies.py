@@ -6,6 +6,9 @@ import os
 os.chdir(
     r"/rds/general/user/ldq20/home/case_study_length/L_scale_study"
 )
+
+
+
 # Import modules and libraries
 from abaqus import *
 from abaqusConstants import *
@@ -15,6 +18,10 @@ import sys
 import fileinput
 import math
 from abaqus import getInput
+
+
+
+
 
 
 def case_study(
