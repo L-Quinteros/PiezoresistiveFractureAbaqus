@@ -1,8 +1,8 @@
 ! User element subroutine for the phase field model for fracture
-! Linear elasticity couple with piezoresistive effect, suitable for
+! Linear elasticity coupled with piezoresistive effect, suitable for
 ! 3D C3D8
 ! Imperial College London
-! Leonel Quinteros - Emilio Martinez-Pa?eda - Enrique Garcia-Macias
+! Leonel Quinteros - Emilio Martinez-Pa?eda - Enrique Garc?a-Mac?as
       module kvisual
       implicit none
       real*8 UserVar(8,18,700000) !C3D8
@@ -36,13 +36,16 @@
 !     ninpt: Number of integration points
 !     nsinvt: Number variables
 !     ndof: Number of degrees of freedom
+
       dimension wght(ninpt),dN(nnode,1),dNdz(ndim,nnode),dstran(ntens),
      1 dNdx(ndim,nnode),b(ntens,nnode*ndim),ddsdde(ntens,ntens),
      2 Edev(ntens),stress(ntens),stran(ntens),statevLocal(nsvint),
      3 cond(ndim,ndim),curr(ndim),dcurr(ndim),curr1(ndim)
 
-!     Initialising  right hand side vector (rhs) and stifness matrix
-!     amatrx. The weights are also initiated.
+!     Initialising: 
+!     rhs: right hand side vector
+!     amatrx : stifness matrix
+!     wght : weights
 
       do k1=1,ndofel
        rhs(k1,1)=0.d0
@@ -71,6 +74,7 @@
       xk=1.d-07
       eg=props(1)/(1.d0+props(2))/2.d0
       bk=props(1)/(1.d0-2.d0*props(2))/3.d0
+      
 !     viscous dissipation and iteration counter
       if (kflag.eq.1) then
        if (jelem.eq.1) then
