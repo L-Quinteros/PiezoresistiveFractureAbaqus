@@ -1,6 +1,13 @@
 # An electromechanical phase-field fracture modelling of piezoresistive materials.
 
-The following repository contains an *user-subroutine* and the corresponding *.inp* files to simulate the piezoresistive fracture in *Abaqus*.
+The following repository contains the *user-subroutine* and the python files to run the model formulated in the article [Electromechanical phase-field fracture modelling of piezoresistive CNT-based composites](https://doi.org/10.1016/j.cma.2023.115941) to simmulate fracture in piezoresistive materials. In addition contains micromechanical based model to obtain the electromechanical constitutive properties, including:
+1. Young's Modulus
+2. Poisson ratio
+3. Critical energy release rate
+
+To otain the electrical properties, please refer to the closed-form solutions of the article [Closed-form solutions for the piezoresistivity properties of short-fiber reinforced composites with percolation-type behavior](https://doi.org/10.1016/j.carbon.2021.08.083) which are also avaiable online in the repository [github.com/EnriqueGarMac](https://github.com/EnriqueGarMac/Analytical_Piezoresistivity).
+
+
 
 ![](Fig_diagram.jpg?raw=true)
 
@@ -84,4 +91,7 @@ $$
 \psi_{0} = \frac{1}{2} \varepsilon^T \colon C \colon \varepsilon
 $$
 
+
 ## How to use the Fortran subroutine in Abaqus
+
+
