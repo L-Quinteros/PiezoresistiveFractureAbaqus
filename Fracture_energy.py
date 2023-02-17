@@ -3,6 +3,7 @@
 import numpy as np 
 
 
+
 def L_ctheta(D_cnt,sigma_ult,tau_int,theta,Ac,mu):
     num=D_cnt*(sigma_ult*(1-Ac*np.tan(theta)))
     den=tau_int*np.exp(mu*theta)*4
