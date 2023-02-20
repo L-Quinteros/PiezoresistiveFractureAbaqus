@@ -94,7 +94,7 @@ $$
 
 ## How to use the UEL?
 
-open the "StudyCase.py" file using Abaqus.
+Open the "StudyCase.py" file using Abaqus.
 
 
 
