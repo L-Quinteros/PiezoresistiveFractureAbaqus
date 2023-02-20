@@ -1,4 +1,5 @@
-# coding=utf-8
+
+
 import numpy as np
 
 
@@ -347,8 +348,8 @@ def orientational_average(number_theta,number_phi,theta_max,phi_max,A,k,val):
     # Author: E. García-Macías
     # ------------------------------------------------------------------------
 
-    if k>1000000:
-        Amed=A
+    if k > 1000000:
+        Amed = A
     else: 
         theta=np.linspace(0,theta_max,number_theta+1)
         phi=np.linspace(0,phi_max,number_phi+1)
