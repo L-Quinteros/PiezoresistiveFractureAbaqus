@@ -92,6 +92,9 @@ $$
 $$
 
 
-## How to use the Fortran subroutine in Abaqus
+## How to use the UEL?
+
+open the "StudyCase.py" file using Abaqus.
+
 
 
