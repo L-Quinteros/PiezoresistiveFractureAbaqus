@@ -1,12 +1,5 @@
-# Model electrically conductive strip
-
 # Import working directory
 import os
-
-os.chdir(
-    r"/rds/general/user/ldq20/home/case_study_length/L_scale_study"
-)
-
 
 
 # Import modules and libraries
@@ -18,8 +11,6 @@ import sys
 import fileinput
 import math
 from abaqus import getInput
-
-
 
 
 
@@ -44,24 +35,37 @@ def case_study(
     meshsize2
 ):
     if case_study_number == 1:
-        return case_study_1(
-            Vimp,
-            Dimp,
-            Inc,
-            Eyoung,
-            Nu,
-            Gc,
-            theta,
-            cond,
-            pi11,
-            pi12,
-            pi44,
-            k_value,
-            n_value,
-            file_name,
-            meshsize,
-            meshsize2
+        name_of_file = "Case1"
+        Mdb()
+        mdb.ModelFromInputFile(name=name_of_file, inputFileName=name_of_file + ".inp")
+
+        mdb.JobFromInputFile(
+            name=name_of_file,
+            inputFileName=name_of_file + ".inp",
+            type=ANALYSIS,
+            atTime=None,
+            waitMinutes=0,
+            waitHours=0,
+            queue=None,
+            memory=90,
+            memoryUnits=PERCENTAGE,
+            getMemoryFromAnalysis=True,
+            explicitPrecision=SINGLE,
+            nodalOutputPrecision=SINGLE,
+            userSubroutine="UEL_piezoresistive_phasefield.for",
+            scratch="",
+            resultsFormat=ODB,
+            multiprocessingMode=DEFAULT,
+            numCpus=8,
+            numDomains=8,
+            numGPUs=0,
         )
+
+        jobname = mdb.jobs[name_of_file]
+        jobname.submit()
+        jobname.waitForCompletion()
+
+
     elif case_study_number == 2:
         return case_study_2(
             Vimp,
@@ -100,9 +104,58 @@ def case_study(
             meshsize,
             meshsize2
         )
+    elif case_study_number == 4:
+        return case_study_4(
+            Vimp,
+            Dimp,
+            Inc,
+            Eyoung,
+            Nu,
+            Gc,
+            theta,
+            cond,
+            pi11,
+            pi12,
+            pi44,
+            k_value,
+            n_value,
+            file_name,
+            meshsize,
+            meshsize2
+        )
+    elif case_study_number == 5:
+        name_of_file = "Case5"
+        Mdb()
+        mdb.ModelFromInputFile(name=name_of_file, inputFileName=name_of_file + ".inp")
+
+        mdb.JobFromInputFile(
+            name=name_of_file,
+            inputFileName=name_of_file + ".inp",
+            type=ANALYSIS,
+            atTime=None,
+            waitMinutes=0,
+            waitHours=0,
+            queue=None,
+            memory=90,
+            memoryUnits=PERCENTAGE,
+            getMemoryFromAnalysis=True,
+            explicitPrecision=SINGLE,
+            nodalOutputPrecision=SINGLE,
+            userSubroutine="UEL_piezoresistive_phasefield.for",
+            scratch="",
+            resultsFormat=ODB,
+            multiprocessingMode=DEFAULT,
+            numCpus=8,
+            numDomains=8,
+            numGPUs=0,
+        )
+
+        jobname = mdb.jobs[name_of_file]
+        jobname.submit()
+        jobname.waitForCompletion()    
 
 
-def case_study_1(
+def case_study_2(
     Vimp,
     Dimp,
     Inc,
@@ -123,11 +176,6 @@ def case_study_1(
     name_of_file = file_name
     # Parameters
     ######################################################################
-    ######################################################################
-    ######################################################################
-    ######################################################################
-    ######################################################################
-    ######################################################################
     lx = 0.1  # [m]
     ly = 0.2  # [m]
     lz = 0.005  # [m]
@@ -139,11 +187,6 @@ def case_study_1(
     theta = theta * (np.pi / 180)
 
     # Phase-field
-    ######################################################################
-    ######################################################################
-    ######################################################################
-    ######################################################################
-    ######################################################################
     ######################################################################
     # Model
     modelSK = mdb.models["Model-1"]
@@ -1002,7 +1045,7 @@ def case_study_1(
 ##################################
 ##################################
 # Study case 2
-def case_study_2(
+def case_study_3(
     Vimp,
     Dimp,
     Inc,
@@ -1912,7 +1955,7 @@ def case_study_2(
 ##################################
 ##################################
 # Study case 3
-def case_study_3(
+def case_study_4(
     Vimp,
     Dimp,
     Inc,

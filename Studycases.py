@@ -76,6 +76,70 @@ GM = FractureEnergy(G0, Lcnt, Dcnt, SigmaUlt, TauInt, Ac, mu,
 
 Gc = GM.EnergyReleaseRate()
 
-#%%
+# %%  Electrical conductivity and piezoresistive coefficients
+# Please refer to github.com/EnriqueGarMac
+
+cond = 0.0337437  # [S/m]
+
+pi11 = 1.2017119765168127
+
+pi12 = 1.2015765068624864
+
+pi44 = 6.773482716315726e-05
+
+# %% Case studies
+# Import Abaqus modules
+import os
+from abaqus import *
+from abaqusConstants import *
+from caeModules import *
+from abaqus import getInput
+from odbAccess import *
+# Import Study cases
+from Studies import *
+# PLEASE SELECT THE DIRECTORY
+os.chdir(
+    r"/rds/general/user/ldq20/home/case_study_length/L_scale_study"
+)
+
+Vimp = 10.0  # [v] Applied Voltage
+
+Dimp = 0.0001  # [m] Applied Displacement
+
+Inc = 0.005  # Increment of steps
+
+NotchedAngle = 0 # [-]
+
+k_value = 50  #
+
+n_value = 6  #
+
+meshsize1 = 0.001
+
+meshsize2 = meshsize1*3 
+
+case_number = 1 # Could be from 1 to 5
+
+file_name = 'CaseStudy'
+
+case_study(
+        Vimp,
+        Dimp,
+        Inc,
+        E,
+        nu,
+        Gc,
+        NotchedAngle,
+        cond,
+        pi11,
+        pi12,
+        pi44,
+        k_value,
+        n_value,
+        file_name,
+        case_number,
+        meshsize1,
+        meshsize2
+        )
 
 
