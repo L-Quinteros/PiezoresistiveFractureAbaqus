@@ -169,4 +169,5 @@ if __name__ == "__main__":
                         NInter=100, Ntheta=1000)
 
     FE = GM.EnergyReleaseRate()
+    
     print(FE)

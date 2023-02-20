@@ -730,25 +730,34 @@ if __name__ == "__main__":
 
     # Matrix
     EMatrix = 2.5e9             # Young´s modulus MPa
+
     NuMatrix = 0.28               # Poisson´s ratio
-    # densm = 1.12               # Density g/cm3
 
     # MWCNTs
+
     # Isotropic material
     ECnt = 700e9                # Young´s modulus MPa
+
     NuCnt = 0.3                  # Poisson´s ratio
 
     # Mechanical properties
-    # densp = 1.42                              # Density g/cm3
     Lcnt = 3.20995854347668e-6                # Length [microns]
+
     Dcnt = 10.3538294770233e-9              # Diameter [nm]
 
-    EInt = 2.17e9
-    NuInt = NuMatrix
+    EInt = 2.17e9                # Young´s modulus MPa
+
+    NuInt = NuMatrix                  # Poisson´s ratio
+
     Intert = 31e-9                      # Interphase thickness nm
+
     type_inter = 1               # 1- Soft interphase, 2- Hard interphase
+
     fc = 0.01
 
     HMethod = MFH(Lcnt, Dcnt, EMatrix, NuMatrix, ECnt,
                   NuCnt, EInt, NuInt, Intert, fc)
+
     E, nu = HMethod.ComputeMechanicalProps()
+
+
