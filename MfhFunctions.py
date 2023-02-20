@@ -759,5 +759,6 @@ if __name__ == "__main__":
                   NuCnt, EInt, NuInt, Intert, fc)
 
     E, nu = HMethod.ComputeMechanicalProps()
+    
 
 
