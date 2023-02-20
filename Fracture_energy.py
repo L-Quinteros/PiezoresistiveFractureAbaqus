@@ -137,20 +137,32 @@ class FractureEnergy:
 if __name__ == "__main__":
 
     Lcnt = 3.20995854347668e-6  # Length [microns]
+
     Dcnt = 10.3538294770233e-9  # Diameter [nm]
+
     ThetaMin = 0  # [rad]
+
     ThetaMax = np.pi / 2  # [rad]
+
     LMin = 0
+
     LMax = Lcnt / 2  # Maximum Cnt length to integrate
+
     mu = 0  #
-    Ac = 0.083  # Orientation limit angle
-    G0 = 200  # [J/m2]
-    SigmaUlt = 35e9  # CNT ultimate strength [Pa]
-    Ecnt = 700e9  # Youngs modulus MPa
-    nu_cnt = 0.3  # Poissons ratio
-    TauInt = 47e6  # CNT interfatial strength [Pa] (epoxy-CNT)
-    fc = 0.01
     
+    Ac = 0.083  # Orientation limit angle
+    
+    G0 = 200  # [J/m2]
+    
+    SigmaUlt = 35e9  # CNT ultimate strength [Pa]
+    
+    Ecnt = 700e9  # Youngs modulus MPa
+    
+    nu_cnt = 0.3  # Poissons ratio
+    
+    TauInt = 47e6  # CNT interfatial strength [Pa] (epoxy-CNT)
+    
+    fc = 0.01
     
     GM = FractureEnergy(G0, Lcnt, Dcnt, SigmaUlt, TauInt, Ac, mu,
                         Ecnt, ThetaMin, ThetaMax, fc, p=0.5, q=0.5,
